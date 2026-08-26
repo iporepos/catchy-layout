@@ -1,0 +1,46 @@
+% =========================================================================
+% main.tex
+% -------------------------------------------------------------------------
+% Same config.tex as the real book; only the chapter content differs (blind
+% text, every component exercised once). Use this to iterate on layout
+% parameters and to provoke edge cases without touching real manuscript text.
+%
+% Compile with pdfLaTeX, 3 passes (ToC + \Cref need the extra runs).
+% =========================================================================
+\documentclass[10pt,twoside,twocolumn,openany]{book}
+\input{config}
+\input{cover}
+\input{colophon}
+
+\begin{document}
+
+\makebookcover
+  {./figures/cover/main-cover}
+  {Hydrology}
+  {An Integrated Treatment Across Scales}
+  {Murugesu Sivapalan \\ Peter Troch \\ Günter Blöschl}
+
+
+\makecolophon{}
+
+% ---- front matter: table of contents -------------------------------------
+% \tableofcontents manages its own onecolumn -> twocolumn transition
+% internally; no need to (and don't) wrap it in \frontmatter/\onecolumn
+% yourself, or you get duplicate page breaks.
+\pagenumbering{roman}
+\pagestyle{empty}
+\tableofcontents
+
+% ---- main matter ----------------------------------------------------------
+\pagenumbering{arabic}
+\pagestyle{bookheader}
+
+\include{chapter00}
+\include{chapter01}
+\include{chapter02}
+\include{chapter03}
+
+
+
+
+\end{document}

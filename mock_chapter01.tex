@@ -1,0 +1,244 @@
+% !TEX root = mockup.tex
+% =========================================================================
+% MOCKUP CHAPTER 1 -- full-decoration standard chapter
+% Purpose: exercise EVERY layout component, roughly one cluster per page,
+% so edge cases can be provoked by editing this file alone.
+% Blind text throughout.
+% =========================================================================
+\startchapter{Water Balance at Climatic Time Scales}
+\chaptershortname{Water Balance}
+
+% =========================================================================
+% COVER PAGE
+% Edge cases to play with here:
+%   - lengthen the caption -> the number/caption bar grows, number cell
+%     grows with it (bar height is a MINIMUM, not a maximum)
+%   - lengthen the spoiler -> it must still fit on the cover page; if it
+%     overruns, cut words or reduce \bookcoverimageheight in config.tex
+% =========================================================================
+\chaptercover{C01-cov-bolivia}{A cover caption of typical length, describing
+the photograph and the story behind it in two or three lines of text.}%
+{we work through every component of the book layout at least once, so that
+each element can be inspected in place and stressed until it breaks. This
+spoiler paragraph is roughly the length a real one should be: long enough to
+fill the two balanced columns beneath the caption bar, short enough that it
+never threatens to push past the bottom of the cover page.}
+
+% =========================================================================
+% FIRST PAGE -- title row + skills box at the top of column 2
+% =========================================================================
+\chapterfirstpage{%
+\begin{itemize}
+\item Determine long-term water availability for planning and allocation by
+      quantifying the catchment water balance.
+\item Interpret long-term streamflow variability by relating inter-annual and
+      decadal runoff patterns to regional climate drivers.
+\item Support water-supply reliability and drought-risk assessments.
+\item Evaluate and justify model performance at long time scales.
+\item Produce defensible long-term water-balance assessments for basin
+      planning studies and regulatory submissions.
+\end{itemize}
+}
+
+\section{How does the long-term water balance arise?}
+
+\paragraph{Societal importance} \lipsum[1]
+
+\paragraph{Scale context} \lipsum[2]
+
+% --- S figure, top --------------------------------------------------------
+\figplaceholder[S][t]{C01-mtx-titicaca}{C01-mtx-titicaca}{Small (S) figure:
+one column wide, 70\,mm high, placed at the top of the page.}
+
+\lipsum[3-4]
+
+% --- S figure, bottom -----------------------------------------------------
+\figplaceholder[S][b]{C01-mtx-boundary}{C01-mtx-boundary}{Small (S) figure at
+the bottom of the page. Tests \texttt{[b]} placement for a column float.}
+
+\lipsum[5-6]
+
+% =========================================================================
+% L figure top + L figure bottom on nearby pages
+% =========================================================================
+\section{Competition between water and energy}
+
+\figplaceholder[L][t]{C01-mtx-georgia}{C01-mtx-georgia}{Large (L) figure:
+full text width, 120\,mm high, top of page.}
+
+\lipsum[7-9]
+
+\figplaceholder[L][b]{C01-mtx-rainfall}{C01-mtx-rainfall}{Large (L) figure at
+the bottom of the page. Two-column bottom floats need the \texttt{stfloats}
+package -- without it LaTeX silently moves them to a float page.}
+
+\lipsum[10-11]
+
+% =========================================================================
+% M figure -- side caption. Two variants: short caption and long caption.
+% =========================================================================
+\subsection{Medium figures and side captions}
+
+\figplaceholder[M][t]{C01-mtx-longterm}{C01-mtx-longterm}{Medium (M) figure,
+short side caption.}
+
+\lipsum[12]
+
+\figplaceholder[M][t]{C01-mtx-jaffna}{C01-mtx-jaffna}{Medium (M) figure with
+a deliberately long side caption, to find the point at which the caption
+column becomes taller than the 100\,mm image block beside it. When that
+happens the float grows and the page budget changes, so this is worth
+watching. Keep adding sentences here until it misbehaves, then decide
+whether to cap the caption length editorially or to change the M width in
+\texttt{config.tex}.}
+
+\lipsum[13-14]
+
+% =========================================================================
+% BOXES -- boxmain in both S and L, at top and bottom
+% =========================================================================
+\subsection{Regular boxes}
+
+\begin{boxmain}[S][t][label=C01-box-pan]{Measurement}{A small, one-column box}
+\boxfigplaceholder{C01-box-pan}
+Evaporation, as the water vapor flux between the land surface and the atmosphere, is much more difficult to measure than precipitation. For most practical water balance calculations, it is common to estimate or measure potential evaporation and then estimate actual evaporation from the land surface by applying a reduction factor to account for water limitation at the land surface. Potential evaporation is the rate of evaporation under the given atmospheric conditions when there is unlimited water on the surface. One of the most common and direct methods of measuring potential evaporation is by means of evaporation pans (see picture). Evaporation pans have also been standardized for easy comparison between different sites. The most common type in the US is referred to as Class A evaporation pan, shown in the photo alongside with a wind run anemometer and a raingauge floating on the water. Potential evaporation is measured daily as the change in the depth of water (in mm) that evaporated from the pan, after correction for any rainfall that may have occurred during the day.
+\end{boxmain}
+
+\lipsum[16-17]
+
+\begin{boxmain}[L][t][label=C01-box-gauges]{Measurement}{A large, two-column box}
+\boxfigplaceholder{C01-box-gauges}
+Precipitation is measured using instruments called rain gauges, of which many types exist. The most common is the daily storage gauge, which consists of a standard-sized bucket with a funnel that channels rainfall into the bucket. The water level is read every 24 hours, at the same time each day, either manually or using a recording device. To minimize measurement errors, rain gauges must follow standard designs and be operated according to standardad procedures. The most widely used designs are the U.S. National Weather Service (NWS) standard rain gauge (photo) and the World Meteorological Organization (WMO) standard gauge. The most common method for measuring streamflow in a river is by recording changes in water level, known as stage (measured in meters). Photo shows a (manual) staff gauge. Stage is then converted to streamflow (m/s) using an empirical rating curve, or stagedischarge relationship. This curve is usually developed from careful measurements of flow velocity made under a range of flow conditions, although in special cases it can be derived theoretically using open-channel hydraulics and information about the rivers cross-section.
+\end{boxmain}
+
+\lipsum[19-20]
+
+
+% =========================================================================
+% BIOGRAPHY BOX -- always L, always bottom (wrapper is baked into the env)
+% =========================================================================
+\subsection{Biography boxes}
+
+\begin{boxbio}{Elizabeth M. Shaw}{1928}{2013}
+\boxbiofigplaceholder{C01-bio-shaw}
+\tcblower
+Elizabeth M. Shaw advanced practical hydrological methods for measurement, data analysis, and design applications, including rainfall network design. Her textbook Hydrology in Practice became an international standard reference and helped establish data-driven, methodologically transparent practice as a cornerstone of engineering hydrology in the UK and internationally.
+\end{boxbio}
+
+\lipsum[32-40]
+
+\lipsum[32-40]
+
+\begin{boxbio}{Elizabeth M. Shaw}{1928}{2013}
+\boxbiofigplaceholder{C01-bio-shaw}
+\tcblower
+Elizabeth M. Shaw advanced practical hydrological methods for measurement, data analysis, and design applications, including rainfall network design. Her textbook Hydrology in Practice became an international standard reference and helped establish data-driven, methodologically transparent practice as a cornerstone of engineering hydrology in the UK and internationally.
+\end{boxbio}
+
+
+% =========================================================================
+% WORKED EXAMPLES, EQUATIONS, TABLES
+% =========================================================================
+\section{Worked examples, equations and tables}
+
+\begin{workedexample}{Unit Conversion}
+\subcase{Problem} \lipsum[34]
+
+\subcase{Solution} The catchment water balance is
+
+\begin{equation}
+\frac{\mathrm{d}S}{\mathrm{d}t} = P - E - Q
+\label{eq:mock-wb}
+\end{equation}
+
+which for the long-term average, where $\mathrm{d}S/\mathrm{d}t \to 0$,
+reduces to $\bar{Q} = \bar{P} - \bar{E}$.
+\end{workedexample}
+
+\lipsum[35]
+
+\begin{workedexample}{A second worked example}
+\subcase{Problem} A shorter one, to check the spacing when two worked
+examples fall close together.
+
+\subcase{Solution} \lipsum[36]
+\end{workedexample}
+
+\lipsum[37-38]
+
+\begin{table*}[t]
+\caption{Tables are always two-column and placed at the top of a page.}
+\label{tab:mock-ch1}
+\sffamily\scriptsize
+\begin{tabular}{p{0.20\textwidth} p{0.16\textwidth} p{0.20\textwidth} p{0.18\textwidth} p{0.16\textwidth}}
+\toprule
+\textbf{Quantity} & \textbf{Symbol} & \textbf{Typical range} &
+\textbf{Units} & \textbf{Notes} \\
+\midrule
+Precipitation & $P$ & 200--3000 & mm/yr & Catchment average \\
+\addlinespace
+Evaporation & $E$ & 150--1500 & mm/yr & Actual, not potential \\
+\addlinespace
+Runoff & $Q$ & 5--2000 & mm/yr & Measured at the outlet \\
+\addlinespace
+Storage change & $\mathrm{d}S/\mathrm{d}t$ & $\approx 0$ & mm/yr &
+Long-term average \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\lipsum[39-40]
+
+% =========================================================================
+% CROSS-REFERENCES -- every referenceable object type
+% =========================================================================
+\subsection{Cross-reference round-trip}
+
+All of these must resolve to numbers, not question marks:
+\Cref{C01-mtx-titicaca} (S figure),
+\Cref{C01-mtx-georgia} (L figure),
+\Cref{C01-mtx-longterm} (M figure),
+\Cref{C01-box-gauges} and \Cref{C01-box-perth} (boxes),
+\Cref{tab:mock-ch1} (table),
+\Cref{eq:mock-wb} (equation), and
+\Cref{wex:mock} (worked example, referenced below).
+
+\begin{workedexample}{A labelled worked example}
+\label{wex:mock}
+\lipsum[41]
+\end{workedexample}
+
+\lipsum[42-43]
+
+An author note in a standard chapter: \authornote{check that highlighting
+still reads correctly against the part-dependent box colour.}
+
+\lipsum[10-43]
+
+% =========================================================================
+% ENDING PAGE -- take-home box, two columns, bottom (wrapper baked in)
+% =========================================================================
+
+\begin{boxmessages}
+\begin{itemize}
+\item The take-home box always spans both columns and always sits at the
+      bottom of the page; the chapter file never wraps it in a float.
+\item It should land at the bottom of the last page of chapter body text.
+\item If the chapter body ends exactly at a page break, this box may be
+      pushed onto a page of its own -- one of the edge cases worth probing.
+\item A fourth message, to make the box taller.
+\end{itemize}
+\end{boxmessages}
+
+% =========================================================================
+% HOMEWORK PAGES
+% =========================================================================
+\chapterhardbreak
+\section*{Homework problems}
+
+\begin{enumerate}
+\item \lipsum[46]
+\item \lipsum[47]
+\item A shorter problem, to vary the rhythm.
+\item \lipsum[48]
+\end{enumerate}

@@ -1,0 +1,134 @@
+% !TEX root = mockup.tex
+% =========================================================================
+% MOCKUP CHAPTER 0 -- Preface
+% Purpose: verify that an UNDECORATED chapter (no cover page, no skills box,
+% no take-home box, unnumbered) still gets the correct body layout, headers,
+% and float behaviour. Blind text throughout.
+% =========================================================================
+\startchapterstar{Prologue: From Raindrops to River Systems}
+\chaptershortname{Prologue}
+
+% =========================================================================
+% FIRST PAGE -- title row + skills box at the top of column 2
+% =========================================================================
+\chapterfirstpage{}
+
+% --- p1: plain opening, no decoration ------------------------------------
+\section{A preface has no cover page}
+
+\lipsum[1-2]
+
+Note that this chapter opens directly on a text page: no full-bleed cover,
+no chapter-number bar, no professional-skills box. The running header still
+works, and the page number still sits on the outer edge.
+
+\lipsum[3]
+
+% --- p2: S figure top + S figure bottom ----------------------------------
+\figplaceholder[S][t]{C00-mtx-processes}{C00-mtx-processes}{Single-column
+figure, top of page. The image block is exactly 83.5\,mm wide by 70\,mm high
+regardless of the artwork's own aspect ratio.}
+
+\lipsum[4-5]
+
+\figplaceholder[S][b]{C00-mtx-cycles}{C00-mtx-cycles}{Single-column figure,
+bottom of page. Tests that \texttt{[b]} works for ordinary column floats.}
+
+\lipsum[6-7]
+
+% --- p3: L figure top -----------------------------------------------------
+\section{Two-column figures in an undecorated chapter}
+
+\figplaceholder[L][t]{C00-mtx-time}{C00-mtx-time}{Two-column figure, top of
+page. Image block is 172\,mm by 120\,mm.}
+
+\lipsum[8-10]
+
+% --- p4: M figure with side caption --------------------------------------
+\figplaceholder[M][t]{C00-mtx-ranges}{C00-mtx-ranges}{Medium figure with the
+caption set beside it on the right. Image block is 126\,mm by 100\,mm, and
+the caption takes the remaining 41\,mm of the text width. This caption is
+deliberately long so the side column wraps to several lines and you can see
+how tall a side caption is allowed to get before it looks wrong.}
+
+\lipsum[11-13]
+
+% --- p5: table (always two-column, top) ----------------------------------
+\section{Tables}
+
+\begin{table*}[t]
+\caption{Tables are always two-column and always placed at the top of a page.
+This one is deliberately wide enough to test the full text measure.}
+\label{tab:mock-preface}
+\sffamily\scriptsize
+\begin{tabular}{p{0.16\textwidth} p{0.16\textwidth} p{0.20\textwidth} p{0.20\textwidth} p{0.18\textwidth}}
+\toprule
+\textbf{Column one} & \textbf{Column two} & \textbf{Column three} &
+\textbf{Column four} & \textbf{Column five} \\
+\midrule
+Lorem ipsum dolor & Sit amet consectetur & Adipiscing elit sed do eiusmod &
+Tempor incididunt ut labore et dolore & Magna aliqua ut enim \\
+\addlinespace
+Ad minim veniam & Quis nostrud & Exercitation ullamco laboris nisi &
+Ut aliquip ex ea commodo consequat & Duis aute irure dolor \\
+\addlinespace
+In reprehenderit & In voluptate velit & Esse cillum dolore eu fugiat &
+Nulla pariatur excepteur sint occaecat & Cupidatat non proident \\
+\addlinespace
+Sunt in culpa & Qui officia deserunt & Mollit anim id est laborum &
+Sed ut perspiciatis unde omnis iste & Natus error sit voluptatem \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\lipsum[14-16]
+
+% --- p6: equations, cross-references, lists ------------------------------
+\section{Equations, cross-references and lists}
+
+\lipsum[17]
+
+A numbered equation, which should carry the chapter prefix:
+
+\begin{equation}
+\bar{Q} = \bar{P} - \bar{E} - \frac{\mathrm{d}S}{\mathrm{d}t}
+\label{eq:mock-balance}
+\end{equation}
+
+Cross-reference tests, all of which must resolve:
+\Cref{eq:mock-balance}, \Cref{C00-mtx-processes}, \Cref{C00-mtx-ranges} and
+\Cref{tab:mock-preface}.
+
+\begin{itemize}
+\item An itemised list inside the body text, first item.
+\item A second item, slightly longer so that it wraps onto a second line in
+      an 83.5\,mm column and you can inspect the hanging indent.
+\item A third item.
+\end{itemize}
+
+\begin{enumerate}[(a)]
+\item An enumerated list using the \texttt{shortlabels} option.
+\item Second entry.
+\end{enumerate}
+
+\lipsum[18]
+
+\subsection{A subsection heading}
+
+\lipsum[19]
+
+\subsubsection{A subsubsection heading}
+
+\lipsum[20]
+
+\paragraph{A run-in paragraph heading} \lipsum[21]
+
+An author note for editorial review: \authornote{this is what an author note
+looks like inline in the body text.}
+
+\lipsum[22]
+
+% --- p7: no take-home box in a preface -----------------------------------
+\section{The preface ends without a take-home box}
+
+\lipsum[23-24]

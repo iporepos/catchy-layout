@@ -1,0 +1,122 @@
+% =========================================================================
+% cover.tex -- book cover page
+% -------------------------------------------------------------------------
+% Macros only, no output. \input alongside config.tex; call \makebookcover
+% once inside \begin{document}. Uses only packages config.tex already
+% loads (tikz, eso-pic, xstring) -- no new dependencies.
+%
+% Positioning: every element sits at an ABSOLUTE page coordinate via a
+% single TikZ overlay with origin at the page's lower-left corner. All
+% distances/fonts/anchors are tunable in parameters.tex, sec. 13; only
+% CONTENT (image path, title, subtitle, authors) is a command argument,
+% same split as \chaptercover.
+% =========================================================================
+
+% -----------------------------------------------------------------------
+% Anchor-based centre-crop: same "fit one dimension, clip the other" logic
+% as \bookcropimage (config.tex sec. 9), generalised with two 0-1 fractions
+% choosing WHERE in the overflow the crop sits instead of always centring.
+%   xanchor: 0 = image's left edge shown, 1 = right edge, 0.5 = centred
+%   yanchor: 0 = image's bottom edge shown, 1 = top edge, 0.5 = centred
+% (0,0) is the "lower-left anchor" case; \bookcropimage is unaffected --
+% this is a separate command, not a change to it.
+% #1 image path  #2 target width  #3 target height  #4 xanchor  #5 yanchor
+\newsavebox{\bookcropanchorbox}
+\newlength{\bookcropanchornw}
+\newlength{\bookcropanchornh}
+\newlength{\bookcropanchorsw}
+\newlength{\bookcropanchorsh}
+\newlength{\bookcropanchorox}
+\newlength{\bookcropanchoroy}
+\newcommand{\bookcropimageanchor}[5]{%
+  \sbox{\bookcropanchorbox}{\includegraphics{#1}}%
+  \setlength{\bookcropanchornw}{\wd\bookcropanchorbox}%
+  \setlength{\bookcropanchornh}{\ht\bookcropanchorbox}%
+  \begin{tikzpicture}
+    \path[use as bounding box] (0,0) rectangle (#2,#3);
+    \clip (0,0) rectangle (#2,#3);
+    \pgfmathtruncatemacro{\bookcropanchorwider}{%
+      (#2/#3) > (\bookcropanchornw/\bookcropanchornh) ? 1 : 0}%
+    \ifnum\bookcropanchorwider=1
+      % fits width exactly; overflow is vertical -> crop via yanchor
+      \setlength{\bookcropanchorsw}{#2}%
+      \pgfmathsetlength{\bookcropanchorsh}{(#2)*(\bookcropanchornh/\bookcropanchornw)}%
+      \setlength{\bookcropanchorox}{0pt}%
+      \pgfmathsetlength{\bookcropanchoroy}{-1*(\bookcropanchorsh-#3)*(#5)}%
+    \else
+      % fits height exactly; overflow is horizontal -> crop via xanchor
+      \setlength{\bookcropanchorsh}{#3}%
+      \pgfmathsetlength{\bookcropanchorsw}{(#3)*(\bookcropanchornw/\bookcropanchornh)}%
+      \setlength{\bookcropanchoroy}{0pt}%
+      \pgfmathsetlength{\bookcropanchorox}{-1*(\bookcropanchorsw-#2)*(#4)}%
+    \fi
+    \node[anchor=south west, inner sep=0pt] at (\bookcropanchorox,\bookcropanchoroy)
+      {\includegraphics[width=\bookcropanchorsw,height=\bookcropanchorsh]{#1}};
+  \end{tikzpicture}%
+}
+
+% -----------------------------------------------------------------------
+% Editor logo -- same extension-fallback pattern as the rest of the book
+% (pdf -> png -> jpeg -> jpg); dashed-box placeholder if none exists yet.
+\newcommand{\makebookcoverlogo}{%
+  \IfFileExists{\bookcoverlogopath.pdf}{%
+    \includegraphics[width=\bookcoverlogowidth,height=\bookcoverlogoheight,keepaspectratio]{\bookcoverlogopath.pdf}%
+  }{\IfFileExists{\bookcoverlogopath.png}{%
+    \includegraphics[width=\bookcoverlogowidth,height=\bookcoverlogoheight,keepaspectratio]{\bookcoverlogopath.png}%
+  }{\IfFileExists{\bookcoverlogopath.jpeg}{%
+    \includegraphics[width=\bookcoverlogowidth,height=\bookcoverlogoheight,keepaspectratio]{\bookcoverlogopath.jpeg}%
+  }{\IfFileExists{\bookcoverlogopath.jpg}{%
+    \includegraphics[width=\bookcoverlogowidth,height=\bookcoverlogoheight,keepaspectratio]{\bookcoverlogopath.jpg}%
+  }{%
+    \fbox{\parbox[c][\bookcoverlogoheight][c]{\bookcoverlogowidth}{%
+      \centering\sffamily\footnotesize\color{gray!70}editor logo}}%
+  }}}}%
+}
+
+% -----------------------------------------------------------------------
+% Full cover page.
+% #1 (optional) photo xanchor, default \bookcoverphotoxanchor
+% #2 (optional) photo yanchor, default \bookcoverphotoyanchor
+% #3 cover photo path, NO extension (tries pdf/png/jpeg/jpg)
+% #4 title   #5 subtitle   #6 authors (free text; use \\ between names)
+\newlength{\bookcoverlogoy}
+\newlength{\bookcoverauthorx}
+\NewDocumentCommand{\makebookcover}{O{\bookcoverphotoxanchor} O{\bookcoverphotoyanchor} m m m m}{%
+  \setlength{\bookcoverlogoy}{\dimexpr\bookpageheight-\bookcoverlogotopgap\relax}%
+  \setlength{\bookcoverauthorx}{\dimexpr\bookpagewidth-\bookcoverauthorright\relax}%
+  \thispagestyle{empty}%
+  \AddToShipoutPictureBG*{%
+    \AtPageLowerLeft{%
+      \begin{tikzpicture}[remember picture, overlay]
+        % ---- full-bleed photo, tier-free extension fallback -------------
+        \node[anchor=south west, inner sep=0pt] at (0,0) {%
+          \IfFileExists{#3.pdf}{\bookcropimageanchor{#3.pdf}{\bookpagewidth}{\bookpageheight}{#1}{#2}}{%
+          \IfFileExists{#3.png}{\bookcropimageanchor{#3.png}{\bookpagewidth}{\bookpageheight}{#1}{#2}}{%
+          \IfFileExists{#3.jpeg}{\bookcropimageanchor{#3.jpeg}{\bookpagewidth}{\bookpageheight}{#1}{#2}}{%
+          \IfFileExists{#3.jpg}{\bookcropimageanchor{#3.jpg}{\bookpagewidth}{\bookpageheight}{#1}{#2}}{%
+            \colorbox{gray!25}{\parbox[c][\bookpageheight][c]{\bookpagewidth}{%
+              \centering\sffamily\large\color{gray!60}[cover photo: #3]}}%
+          }}}}%
+        };
+        % ---- editor logo, top-left ---------------------------------------
+        \node[anchor=north west, inner sep=0pt] at (\bookcoverlogox,\bookcoverlogoy)
+          {\makebookcoverlogo};
+        % ---- title / subtitle, left-aligned ------------------------------
+        \node[anchor=south west, inner sep=0pt] at (\bookcovertextleft,\bookcovertitlebottomgap)
+          {\parbox[b]{\bookcovertextwidth}{%
+            \raggedright\sffamily\bfseries\bookcovertitlefont
+            \color{\bookcovertitlecolor}#4\par
+            \vspace{\bookcovertitlesubtitlegap}
+            {\mdseries\bookcoversubtitlefont\color{\bookcoversubtitlecolor}#5\par}%
+          }};
+        % ---- authors, bottom-right ----------------------------------------
+        \node[anchor=south east, inner sep=0pt] at (\bookcoverauthorx,\bookcoverauthorbottom)
+          {\parbox[b][][b]{\bookcoverauthorwidth}{%
+            \raggedleft\sffamily\bookcoverauthorfont
+            \color{\bookcoverauthorcolor}#6\par}};
+      \end{tikzpicture}%
+    }%
+  }%
+  \null
+  \clearpage
+}

@@ -1,0 +1,223 @@
+% =========================================================================
+% parameters.tex -- all user-tunable numbers, colours, and toggles.
+% Edit values here; config.tex reads them and should not need to change
+% when you retune the layout. Loaded once from config.tex via \input.
+% Section numbers match config.tex for easy cross-reference.
+% =========================================================================
+
+% -----------------------------------------------------------------------
+% 1. PAGE GEOMETRY
+% -----------------------------------------------------------------------
+\newcommand{\bookpagewidth}{216mm}
+\newcommand{\bookpageheight}{276mm}
+
+\newcommand{\bookcolwidth}{83.5mm}      % single column width
+\newcommand{\bookcolsep}{5mm}           % gap between columns
+\newcommand{\booktextwidth}{172mm}      % = 2*colwidth + colsep
+
+\newcommand{\booklatmargin}{22mm}       % = (pagewidth - textwidth)/2, symmetric
+
+\newcommand{\booktopblank}{5mm}         % blank strip above header (geometry "top")
+\newcommand{\bookheadheight}{7mm}       % header text box height
+\newcommand{\bookheadsep}{3mm}          % header rule -> body text gap
+% NOTE: with includehead, actual top margin to first text line =
+% booktopblank+bookheadheight+bookheadsep = 15mm here, but the cover-image
+% math below uses \booktopmargintotal = 25mm independently. Reconcile these.
+\newcommand{\booktopmargintotal}{25mm}  % used directly by cover-image math
+\newcommand{\bookbottommargin}{20mm}    % blank strip below body text (no footer)
+\newcommand{\bookfootskip}{1pt}         % geometry footskip (no footer in use)
+
+\newcommand{\bodytab}{10mm}
+\newcommand{\bookparindent}{5mm}
+\newcommand{\booklinespread}{1.0}
+
+% -----------------------------------------------------------------------
+% 2. COLOURS
+% -----------------------------------------------------------------------
+\definecolor{maintextcolor}{RGB}{33,30,31}
+\definecolor{headingcolor}{RGB}{42,110,184}
+\definecolor{boxcolor}{RGB}{244,247,252}
+\definecolor{bookcovernumcolor}{RGB}{205,205,205}
+\definecolor{bookcovercapcolor}{RGB}{111,111,111}
+
+% Part-dependent box colour: Part1 blue, Part2 green, Part3 amber
+\definecolor{boxcolorpart1}{RGB}{244,247,252}
+\definecolor{boxcolorpart2}{RGB}{238,252,250}
+\definecolor{boxcolorpart3}{RGB}{252,246,238}
+\newcommand{\bookpartoneend}{6}   % first chapter number OUTSIDE Part 1 (0-5 = Part1)
+\newcommand{\bookparttwoend}{10}  % first chapter number OUTSIDE Part 2 (6-9 = Part2)
+
+\colorlet{headerrulecolor}{headingcolor}
+\newcommand{\headerrulethickness}{1.5pt}
+
+% -----------------------------------------------------------------------
+% 3. HEADINGS, PARAGRAPHS & FLOAT SPACING
+% -----------------------------------------------------------------------
+% Values in \bookvunit (= \baselineskip). Plain and explicit, no auto-snap.
+
+% Paragraph skip
+\newcommand{\bookparskip}{0.2\bookvunit}
+
+% Headers before and after skip
+\newcommand{\bookspacebeforesection}{1.5\bookvunit}
+\newcommand{\bookspaceaftersection}{0.5\bookvunit}
+\newcommand{\bookspacebeforesubsection}{1.2\bookvunit}
+\newcommand{\bookspaceaftersubsection}{0.4\bookvunit}
+\newcommand{\bookspacebeforesubsubsection}{1.0\bookvunit}
+\newcommand{\bookspaceaftersubsubsection}{0.3\bookvunit}
+\newcommand{\bookspacebeforeparagraph}{0.5\bookvunit}
+\newcommand{\bookspaceafterparagraph}{1.5em}   % horizontal, run-in label -> text
+
+\newcommand{\bookspacebeforeexample}{0.5\bookvunit}
+
+% Section numbering
+\newcommand{\booksecnumdepth}{3}
+\newcommand{\booksecnumwidth}{2.2em}       % \thesection label box, e.g. "12"
+\newcommand{\booksubsecnumwidth}{3.2em}    % \thesubsection, e.g. "12.10"
+\newcommand{\booksubsubsecnumwidth}{2.6em} % \thesubsubsection, e.g. "(a)"
+
+% Float spacincg
+\newcommand{\bookfloatsep}{0.25\bookvunit}      % between two stacked floats
+\newcommand{\booktextfloatsep}{0.75\bookvunit}   % between a float and body text
+\newcommand{\bookintextsep}{1.0\bookvunit}      % around an in-text float
+
+% Contents
+\newcommand{\bookcontentstitlesize}{\LARGE}
+\newcommand{\bookspacebeforechapter}{0pt}
+\newcommand{\bookspaceafterchapter}{1.0\bookvunit}   % "Contents" -> first ToC entry
+
+% -----------------------------------------------------------------------
+% 5. CHAPTER OPENING / EDITORIAL TOGGLES
+% -----------------------------------------------------------------------
+\chapterstartseventrue    % chapters open on an EVEN page; \...false for odd
+\booklinenumbersfalse     % editorial line numbers off by default
+
+\newcommand{\bookfirstdecoratedchapter}{1}  % chapters below this get no skills/take-home boxes
+
+% -----------------------------------------------------------------------
+% 6. CHAPTER COVER PAGE
+% -----------------------------------------------------------------------
+\newcommand{\bookcoverimageheight}{160mm}  % full-bleed photo height, from page top
+\newcommand{\bookcoverbarheight}{32mm}     % number/caption bar min height
+\newcommand{\bookcovernumwidth}{32mm}      % number box width (~=bar height, square-ish)
+\newcommand{\bookcovernumfont}{\fontsize{70}{75}\selectfont}
+\newcommand{\bookcovercapwidth}{137mm}
+\newcommand{\bookcoverbarpad}{4mm}         % caption text -> bar min-height padding
+\newcommand{\bookcovergaptobar}{4mm}       % gap: bar -> spoiler container
+\newcommand{\bookcoverlabelgap}{3mm}       % gap: "In this chapter..." -> columns
+\newcommand{\bookcoverspoilerheight}{70mm} % fixed total height of the spoiler
+\newcommand{\bookcovercapspread}{1.3}      % caption line spread
+
+% -----------------------------------------------------------------------
+% 7. CHAPTER FIRST PAGE
+% -----------------------------------------------------------------------
+\newcommand{\bookfirstpagetitlesize}{\fontsize{24}{26}\selectfont}
+\newcommand{\bookfirstpagetitlegap}{10mm}      % title row -> column 1 body
+\newcommand{\bookfirstpagetitlenumgap}{4mm}    % title block -> number box
+\newcommand{\bookfirstpagetitlenudge}{0.15mm}  % vertical fudge, title row vs. headsep
+\newcommand{\bookfirstpagenumboxwidth}{30mm}
+\newcommand{\bookfirstpagenumboxheight}{35mm}
+
+% -----------------------------------------------------------------------
+% 9. FIGURES
+% -----------------------------------------------------------------------
+\newcommand{\bookfigwidthS}{\linewidth}   % one column
+\newcommand{\bookMfigwidth}{126mm}        % medium, side caption
+\newcommand{\bookfigwidthL}{\linewidth}   % two columns (= \booktextwidth)
+
+% Placeholder-only heights (real images scale by width, keeping aspect ratio)
+\newcommand{\bookfigheightS}{70mm}
+\newcommand{\bookfigheightM}{100mm}
+\newcommand{\bookfigheightL}{120mm}
+
+\newcommand{\bookfigcapabove}{0.8\bookvunit}   % image -> caption
+\newcommand{\bookfigcapbelow}{0.2\bookvunit}   % caption -> following content
+
+\newcommand{\bookfiglabelS}{S \textbar{} 83.5 $\times$ 70 mm}
+\newcommand{\bookfiglabelM}{M \textbar{} 126 $\times$ 100 mm}
+\newcommand{\bookfiglabelL}{L \textbar{} 172 $\times$ 120 mm}
+
+\newcommand{\bookboxfigheight}{45mm}    % placeholder height, in-box figures
+\newcommand{\bookbiofigheight}{25mm}    % fixed bio-portrait crop height
+\newcommand{\bookbiofigwidth}{18.75mm}  % 3:4 portrait -> 0.75 * height
+\newcommand{\bookbiotitlegap}{3mm}      % bio name/dates -> body text
+\newcommand{\bookbiogap}{2mm}           % bio image pane -> text pane
+
+% -----------------------------------------------------------------------
+% 10. BOXES
+% -----------------------------------------------------------------------
+\newcommand{\bookboxpad}{1mm}             % boxsep (outer)
+\newcommand{\bookboxpadlat}{0.5mm}        % left/right inner padding
+\newcommand{\bookboxpadtop}{0.5mm}        % body: gap above first line
+\newcommand{\bookboxpadbottom}{0.5mm}     % body: gap below last line
+\newcommand{\bookboxpadtoptitle}{0.5mm}   % title bar: gap above title text
+\newcommand{\bookboxpadbottomtitle}{0mm}  % title bar: gap below title
+
+% -----------------------------------------------------------------------
+% 12. FLOAT PLACEMENT
+% -----------------------------------------------------------------------
+\newcommand{\booktopnumber}{3}
+\newcommand{\bookbottomnumber}{2}
+\newcommand{\booktotalnumber}{4}
+\newcommand{\bookdbltopnumber}{3}
+\newcommand{\booktopfraction}{0.9}
+\newcommand{\bookbottomfraction}{0.7}
+\newcommand{\bookdbltopfraction}{0.9}
+\newcommand{\booktextfraction}{0.08}
+\newcommand{\bookfloatpagefraction}{0.7}
+\newcommand{\bookdblfloatpagefraction}{0.7}
+
+
+% =========================================================================
+% 13. BOOK COVER
+% =========================================================================
+% ---- Cover photo default crop anchor (0=low edge visible, 1=high edge,
+%      0.5=centred). Override per-call via \makebookcover's optional args.
+\newcommand{\bookcoverphotoxanchor}{0.6}
+\newcommand{\bookcoverphotoyanchor}{0.5}
+
+% ---- Editor logo box -------------------------------------------------------
+\newcommand{\bookcoverlogopath}{./figures/cover/logo}  % no extension
+\newcommand{\bookcoverlogowidth}{50mm}
+\newcommand{\bookcoverlogoheight}{14mm}
+\newcommand{\bookcoverlogox}{22mm}       % distance from LEFT page edge
+\newcommand{\bookcoverlogotopgap}{250mm}  % distance from TOP page edge
+
+% ---- Title / subtitle (left-aligned block) ---------------------------------
+\newcommand{\bookcovertitlefont}{\fontsize{60}{70}\selectfont}
+\newcommand{\bookcoversubtitlefont}{\fontsize{25}{30}\selectfont}
+\newcommand{\bookcovertitlecolor}{white}
+\newcommand{\bookcoversubtitlecolor}{white}
+\newcommand{\bookcovertextleft}{22mm}        % left edge, from page left
+\newcommand{\bookcovertextwidth}{150mm}      % wrap width
+\newcommand{\bookcovertitlebottomgap}{180mm}  % distance from BOTTOM page edge
+\newcommand{\bookcovertitlesubtitlegap}{6mm}
+
+% ---- Authors (bottom-right) -------------------------------------------------
+\newcommand{\bookcoverauthorfont}{\fontsize{20}{25}\selectfont}
+\newcommand{\bookcoverauthorcolor}{white}
+\newcommand{\bookcoverauthorright}{22mm}   % distance from RIGHT page edge
+\newcommand{\bookcoverauthorbottom}{50mm}  % distance from BOTTOM page edge
+\newcommand{\bookcoverauthorwidth}{100mm}
+
+% =========================================================================
+% 14. COLOPHON / EXPLANATORY PAGE
+% =========================================================================
+\newcommand{\bookcolophontitle}{About This Document}
+\newcommand{\bookcolophontitlefont}{\Large}
+\newcommand{\bookcolophonbodyfont}{\normalsize}
+\newcommand{\bookcolophontopgap}{30mm}
+\newcommand{\bookcolophontitlegap}{10mm}
+\newcommand{\bookcolophonparagap}{6mm}
+
+% Fixed explanatory wording -- edit here, not at the call site, so it
+% reads the same regardless of which build (mockup vs. real book) uses it.
+\newcommand{\bookcolophonintrotext}{%
+This document is a \LaTeX{}-based layout template for the book
+\textit{Hydrology -- An Integrated Treatment Across Scales}, by Sivapalan \textit{et al}.
+It is \textbf{not} the book itself, but a technical exercise in book
+design and typesetting: it reproduces the intended page layout, chapter
+structure, and visual style using draft or placeholder content, so the
+final formatting can be tested and refined ahead of the finished
+manuscript.%
+}

@@ -1,0 +1,39 @@
+% =========================================================================
+% colophon.tex -- explanatory / metadata page
+% -------------------------------------------------------------------------
+% One-off page (compile time, purpose note, source link, technical team),
+% same split as cover.tex: fixed wording + all spacing/fonts live in
+% parameters.tex sec. 14; only what changes per-build (link, team) is a
+% command argument. \input alongside config.tex/cover.tex.
+% =========================================================================
+
+% #1 = source code link (URL, e.g. https://github.com/org/repo)
+% #2 = technical team, free text, use \\ between names/roles
+\newcommand{\makecolophon}{%
+  \onecolumn
+  \thispagestyle{empty}
+  \vspace*{\bookcolophontopgap}
+  {\centering\sffamily\bfseries\bookcolophontitlefont\color{headingcolor}%
+   \bookcolophontitle\par}
+  \vspace{\bookcolophontitlegap}
+
+  \noindent\sffamily\bookcolophonbodyfont\color{maintextcolor}
+  \bookcolophonintrotext
+  \par\vspace{\bookcolophonparagap}
+
+  \noindent\textbf{Compiled:}\ \DTMNow
+  \par\vspace{\bookcolophonparagap}
+
+  \noindent\textbf{Source code:}\ \url{https://github.com/iporepos/catchy-layout}
+  \par\vspace{\bookcolophonparagap}
+
+
+\begin{center}
+  \noindent Iporã Possantti, PhD\\www.possantti.net\\
+  Porto Alegre, \DTMtoday
+\end{center}
+
+  \vspace*{\fill}
+  \clearpage
+  \twocolumn
+}
