@@ -3,6 +3,11 @@
 *_T*.jpg
 *_T*.png
 chapter*.tex
+*.aux
+*.fdb_latexmk
+*.out
+*.toc
+*.fls
 .idea
 
 # Byte-compiled / optimized / DLL files

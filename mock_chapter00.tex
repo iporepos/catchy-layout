@@ -5,7 +5,7 @@
 % no take-home box, unnumbered) still gets the correct body layout, headers,
 % and float behaviour. Blind text throughout.
 % =========================================================================
-\startchapterstar{Prologue: From Raindrops to River Systems}
+\startchapterstar{Prologue:\\From Raindrops to River Systems}
 \chaptershortname{Prologue}
 
 % =========================================================================
@@ -14,35 +14,31 @@
 \chapterfirstpage{}
 
 % --- p1: plain opening, no decoration ------------------------------------
-\section{A preface has no cover page}
+\section{A prologue has no cover page}
 
-\lipsum[1-2]
+\lipsum[1]
 
 Note that this chapter opens directly on a text page: no full-bleed cover,
 no chapter-number bar, no professional-skills box. The running header still
 works, and the page number still sits on the outer edge.
 
-\lipsum[3]
-
 % --- p2: S figure top + S figure bottom ----------------------------------
-\figplaceholder[S][t]{C00-mtx-processes}{C00-mtx-processes}{Single-column
-figure, top of page. The image block is exactly 83.5\,mm wide by 70\,mm high
-regardless of the artwork's own aspect ratio.}
+\figplaceholder[L][b!]{C00-mtx-processes}{C00-mtx-processes}{Two-column figure, bottom of
+page. Image block is 172\,mm wide, \lipsum[2]}
 
-\lipsum[4-5]
-
-\figplaceholder[S][b]{C00-mtx-cycles}{C00-mtx-cycles}{Single-column figure,
-bottom of page. Tests that \texttt{[b]} works for ordinary column floats.}
-
-\lipsum[6-7]
+\lipsum[6-8]
 
 % --- p3: L figure top -----------------------------------------------------
 \section{Two-column figures in an undecorated chapter}
 
-\figplaceholder[L][t]{C00-mtx-time}{C00-mtx-time}{Two-column figure, top of
-page. Image block is 172\,mm by 120\,mm.}
+\figplaceholder[L][t]{C00-mtx-cycles}{C00-mtx-cycles}{Two-column figure, top of
+page. Image block is 172\,mm wide. \lipsum[2]}
 
-\lipsum[8-10]
+\lipsum[8-12]
+
+\figplaceholder[S][t]{C00-mtx-interactions}{C00-mtx-interactions}{One-column figure, top of
+page. Image block is 83.5\,mm wide. \lipsum[2]}
+
 
 % --- p4: M figure with side caption --------------------------------------
 \figplaceholder[M][t]{C00-mtx-ranges}{C00-mtx-ranges}{Medium figure with the
@@ -51,12 +47,14 @@ the caption takes the remaining 41\,mm of the text width. This caption is
 deliberately long so the side column wraps to several lines and you can see
 how tall a side caption is allowed to get before it looks wrong.}
 
-\lipsum[11-13]
+\lipsum[11-15]
 
 % --- p5: table (always two-column, top) ----------------------------------
 \section{Tables}
 
-\begin{table*}[t]
+\lipsum[11-15]
+
+\begin{table*}[t!]
 \caption{Tables are always two-column and always placed at the top of a page.
 This one is deliberately wide enough to test the full text measure.}
 \label{tab:mock-preface}

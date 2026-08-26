@@ -5,8 +5,8 @@
 % so edge cases can be provoked by editing this file alone.
 % Blind text throughout.
 % =========================================================================
-\startchapter{Water Balance at Climatic Time Scales}
-\chaptershortname{Water Balance}
+\startchapter{Water balance at climatic time scales}
+\chaptershortname{Climatic scale}
 
 % =========================================================================
 % COVER PAGE
@@ -16,13 +16,9 @@
 %   - lengthen the spoiler -> it must still fit on the cover page; if it
 %     overruns, cut words or reduce \bookcoverimageheight in config.tex
 % =========================================================================
-\chaptercover{C01-cov-bolivia}{A cover caption of typical length, describing
-the photograph and the story behind it in two or three lines of text.}%
-{we work through every component of the book layout at least once, so that
-each element can be inspected in place and stressed until it breaks. This
-spoiler paragraph is roughly the length a real one should be: long enough to
-fill the two balanced columns beneath the caption bar, short enough that it
-never threatens to push past the bottom of the cover page.}
+\chaptercover{C01-cov-bolivia}{
+The Tiahuanaco Empire on the shores of Lake Titicaca, in present-day Bolivia, attained the level of an advanced civilization lasting close to 2500 years, on the basis of a seemingly unlimited source of water from snowmelt in the Andes Mountains. Yet less than a century after it reached its zenith in 1100 AD it collapsed apparently due to the onset of a prolonged drought and dramatic changes in the water balance of Lake Titicaca - leading to a lowering of lake water levels and the retreat of the lake surface beyond the reach of human settlements.}%
+{Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque. Lorem ipsum dolor sit amet, consetetuer adipiscing elit. Ut purus elit, vestibulum ut, placeratac, adipiscing vitae, felis. Curabitur dictum gravida mauris.Nam arcu libero, nonummy eget, consectetuer id, vulputatea, magna. Donec vehicula augue eu neque. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placeratac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputatea, magna. Donec vehicula augue eu neque. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placeratac, adipiscing vitae, felis.}
 
 % =========================================================================
 % FIRST PAGE -- title row + skills box at the top of column 2
@@ -47,14 +43,29 @@ never threatens to push past the bottom of the cover page.}
 \paragraph{Scale context} \lipsum[2]
 
 % --- S figure, top --------------------------------------------------------
-\figplaceholder[S][t]{C01-mtx-titicaca}{C01-mtx-titicaca}{Small (S) figure:
-one column wide, 70\,mm high, placed at the top of the page.}
+\figplaceholder[L][t]{C01-mtx-titicaca}{C01-mtx-titicaca}{
+Scale context. Reconstructed water levels of Lake Titicaca from 2000 BC
+to 1900 AD (left), showing a prolonged dry period around AD 1150 (red
+arrow) that likely contributed to the collapse of the Tiahuanaco
+civilization. Measured annual-average water levels from 1910 to 2023
+(right) show recent low levels caused by reduced rainfall and increased
+evaporation, leading to drought emergencies. Together, these records
+highlight large variability in water availability across multiple time
+scales and its adverse impacts on society, both in the past and today.
+}
 
 \lipsum[3-4]
 
 % --- S figure, bottom -----------------------------------------------------
-\figplaceholder[S][b]{C01-mtx-boundary}{C01-mtx-boundary}{Small (S) figure at
-the bottom of the page. Tests \texttt{[b]} placement for a column float.}
+\figplaceholder[M][b]{C01-mtx-boundary}{C01-mtx-boundary}{
+Catchment boundary (green line) and local runoff contributions in
+various parts of the catchment resulting in the river flow (or also
+described as streamflow) Q measured at the outlet of the catchment
+(thick blue arrow). The small blue arrows inside the catchment depict
+local runoff contributions to the river network, all of which accumulate
+ down the river network to generate the streamflow observed at the
+outlet.
+}
 
 \lipsum[5-6]
 
@@ -78,9 +89,6 @@ package -- without it LaTeX silently moves them to a float page.}
 % M figure -- side caption. Two variants: short caption and long caption.
 % =========================================================================
 \subsection{Medium figures and side captions}
-
-\figplaceholder[M][t]{C01-mtx-longterm}{C01-mtx-longterm}{Medium (M) figure,
-short side caption.}
 
 \lipsum[12]
 
@@ -213,7 +221,7 @@ All of these must resolve to numbers, not question marks:
 An author note in a standard chapter: \authornote{check that highlighting
 still reads correctly against the part-dependent box colour.}
 
-\lipsum[10-43]
+\lipsum[10-15]
 
 % =========================================================================
 % ENDING PAGE -- take-home box, two columns, bottom (wrapper baked in)
