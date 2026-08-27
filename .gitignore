@@ -8,6 +8,7 @@ chapter*.tex
 *.out
 *.toc
 *.fls
+bench/
 .idea
 
 # Byte-compiled / optimized / DLL files
