@@ -1,0 +1,92 @@
+% !TEX root = mockup.tex
+% =========================================================================
+% MOCKUP CHAPTER 1 -- full-decoration standard chapter
+% Purpose: exercise EVERY layout component, roughly one cluster per page,
+% so edge cases can be provoked by editing this file alone.
+% Blind text throughout.
+% =========================================================================
+\startchapter{Water balance at climatic time scale}
+\chaptershortname{Climatic scale}
+
+% =========================================================================
+% COVER PAGE
+% Edge cases to play with here:
+%   - lengthen the caption -> the number/caption bar grows, number cell
+%     grows with it (bar height is a MINIMUM, not a maximum)
+%   - lengthen the spoiler -> it must still fit on the cover page; if it
+%     overruns, cut words or reduce \bookcoverimageheight in config.tex
+% =========================================================================
+\chaptercover{C01-cov-bolivia}{Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque. Lorem ipsum dolor sit amet, consetetuer adipiscing elit. Ut purus elit, vestibulum ut, placeratac, adipiscing vitae, felis. Curabitur dictum gravida mauris.Nam arcu libero, nonummy eget.}{
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque. Lorem ipsum dolor sit amet, consetetuer adipiscing elit. Ut purus elit, vestibulum ut, placeratac, adipiscing vitae, felis. Curabitur dictum gravida mauris.Nam arcu libero, nonummy eget, consectetuer id, vulputatea, magna. Donec vehicula augue eu neque. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placeratac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputatea, magna. Donec vehicula augue eu neque. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placeratac, adipiscing vitae, felis.
+}
+
+% =========================================================================
+% FIRST PAGE -- title row + skills box at the top of column 2
+% =========================================================================
+\chapterfirstpage{%
+\begin{itemize}
+\item Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris.
+\item Nam arcu libero, nonummy eget, consectetuer id, vulputatea, magna. Donec vehicula augue eu neque.
+\item Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque.
+\item Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris.
+\item onec vehicula augue eu neque. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placeratac, adipiscing vitae, felis.
+\item Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque.
+\item Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris.
+\end{itemize}
+}
+
+\section{How does the long-term water balance arise?}
+
+\paragraph{Societal importance} \lipsum[1]
+
+\paragraph{Scale context} \lipsum[2]
+
+\lipsum[3-5]
+
+\subsection{Small subsection title}
+
+\lipsum[3-4]
+
+\begin{equation}
+    E = m \times c^2
+\end{equation}
+
+\subsubsection{Small sub-subsection title}
+
+\lipsum[4-5]
+
+\subsubsection{A sub-subsection title that goes beyond one line, like very  words}
+
+\lipsum[6-7]
+
+\figplaceholder[S][t]{C01-mtx-jemez}{C01-mtx-jemez}{Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris.}
+
+\lipsum[3-4]
+
+% =========================================================================
+% ENDING PAGE -- take-home box, two columns, bottom (wrapper baked in)
+% =========================================================================
+\begin{boxmessages}
+\begin{itemize}
+\item The take-home box always spans both columns and always sits at the bottom of the page; the chapter file never wraps it in a float.
+\item It should land at the bottom of the last page of chapter body text.
+\item If the chapter body ends exactly at a page break, this box may be pushed onto a page of its own -- one of the edge cases worth probing.
+\item A fourth message, to make the box taller.
+\item Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris.
+\item Nam arcu libero, nonummy eget, consectetuer id, vulputatea, magna. Donec vehicula augue eu neque.
+\item Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque.
+\end{itemize}
+\end{boxmessages}
+
+% =========================================================================
+% HOMEWORK PAGES
+% =========================================================================
+\chapterhardbreak
+\section*{Homework problems}
+
+\begin{enumerate}
+\item \lipsum[46]
+\item \lipsum[47]
+\item A shorter problem, to vary the rhythm.
+\item \lipsum[48]
+\end{enumerate}

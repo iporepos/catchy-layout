@@ -27,9 +27,7 @@
 \newcommand{\bookbottommargin}{20mm}    % blank strip below body text (no footer)
 \newcommand{\bookfootskip}{1pt}         % geometry footskip (no footer in use)
 
-\newcommand{\bodytab}{10mm}
-\newcommand{\bookparindent}{5mm}
-\newcommand{\booklinespread}{1.0}
+
 
 % -----------------------------------------------------------------------
 % 2. COLOURS
@@ -51,35 +49,65 @@
 \newcommand{\headerrulethickness}{1.5pt}
 
 % -----------------------------------------------------------------------
-% 3. HEADINGS, PARAGRAPHS & FLOAT SPACING
+% 3. LINES, PARAGRAPHS, HEADINGS & ITEMS SPACING
 % -----------------------------------------------------------------------
 % Values in \bookvunit (= \baselineskip). Plain and explicit, no auto-snap.
 
-% Paragraph skip
-\newcommand{\bookparskip}{0.2\bookvunit}
+% ---------------------------------
+% Line spreading factor
+\newcommand{\booklinespread}{1.0}
 
+% ---------------------------------
+% Paragraph indentantion space
+\newcommand{\bookparindent}{5mm}
+
+% Paragraph skip space
+\newcommand{\bookparskip}{2mm}
+
+% ---------------------------------
 % Headers before and after skip
-\newcommand{\bookspacebeforesection}{1.5\bookvunit}
-\newcommand{\bookspaceaftersection}{0.5\bookvunit}
-\newcommand{\bookspacebeforesubsection}{1.2\bookvunit}
-\newcommand{\bookspaceaftersubsection}{0.4\bookvunit}
-\newcommand{\bookspacebeforesubsubsection}{1.0\bookvunit}
-\newcommand{\bookspaceaftersubsubsection}{0.3\bookvunit}
-\newcommand{\bookspacebeforeparagraph}{0.5\bookvunit}
-\newcommand{\bookspaceafterparagraph}{1.5em}   % horizontal, run-in label -> text
 
-\newcommand{\bookspacebeforeexample}{0.5\bookvunit}
+% Sections spaces
+% before
+\newcommand{\bookspacebeforesection}{3.0mm}
+% after
+\newcommand{\bookspaceaftersection}{1.0mm}
+
+% Subsections spaces
+% before
+\newcommand{\bookspacebeforesubsection}{2.0mm}
+% after
+\newcommand{\bookspaceaftersubsection}{1.0mm}
+
+% Sub-subsections spaces
+% before
+\newcommand{\bookspacebeforesubsubsection}{1.2mm}
+% after
+\newcommand{\bookspaceaftersubsubsection}{0.0mm}
+
+% Run-in Paragraph spaces
+% before
+\newcommand{\bookspacebeforeparagraph}{1.0mm}
+% after
+\newcommand{\bookspaceafterparagraph}{5mm}   % horizontal, run-in label -> text
+
+% Example spaces
+\newcommand{\bookspacebeforeexample}{5.0mm}
 
 % Section numbering
 \newcommand{\booksecnumdepth}{3}
-\newcommand{\booksecnumwidth}{2.2em}       % \thesection label box, e.g. "12"
-\newcommand{\booksubsecnumwidth}{3.2em}    % \thesubsection, e.g. "12.10"
-\newcommand{\booksubsubsecnumwidth}{2.6em} % \thesubsubsection, e.g. "(a)"
+\newcommand{\booksecnumwidth}{10mm}       % \thesection label box, e.g. "12"
+\newcommand{\booksubsecnumwidth}{10mm}    % \thesubsection, e.g. "12.10"
+\newcommand{\booksubsubsecnumwidth}{10mm} % \thesubsubsection, e.g. "(a)"
 
 % Float spacincg
-\newcommand{\bookfloatsep}{0.25\bookvunit}      % between two stacked floats
+\newcommand{\bookfloatsep}{5mm}      % between two stacked floats
 \newcommand{\booktextfloatsep}{0.75\bookvunit}   % between a float and body text
 \newcommand{\bookintextsep}{1.0\bookvunit}      % around an in-text float
+
+% Equations Space above/below display equations (equation, align, subequations, ...)
+\newlength{\bookeqspaceabove}  \setlength{\bookeqspaceabove}{0pt}
+\newlength{\bookeqspacebelow}  \setlength{\bookeqspacebelow}{2pt}
 
 % Contents
 \newcommand{\bookcontentstitlesize}{\LARGE}
@@ -203,21 +231,9 @@
 % =========================================================================
 % 14. COLOPHON / EXPLANATORY PAGE
 % =========================================================================
-\newcommand{\bookcolophontitle}{About This Document}
+\newcommand{\bookcolophontitle}{About this document}
 \newcommand{\bookcolophontitlefont}{\Large}
 \newcommand{\bookcolophonbodyfont}{\normalsize}
 \newcommand{\bookcolophontopgap}{30mm}
 \newcommand{\bookcolophontitlegap}{10mm}
 \newcommand{\bookcolophonparagap}{6mm}
-
-% Fixed explanatory wording -- edit here, not at the call site, so it
-% reads the same regardless of which build (mockup vs. real book) uses it.
-\newcommand{\bookcolophonintrotext}{%
-This document is a \LaTeX{}-based layout template for the book
-\textit{Hydrology -- An Integrated Treatment Across Scales}, by Sivapalan \textit{et al}.
-It is \textbf{not} the book itself, but a technical exercise in book
-design and typesetting: it reproduces the intended page layout, chapter
-structure, and visual style using draft or placeholder content, so the
-final formatting can be tested and refined ahead of the finished
-manuscript.%
-}

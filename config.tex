@@ -52,6 +52,7 @@
 \usepackage{lineno}     % editorial line numbers (off by default, see parameters.tex)
 \usepackage[font={footnotesize,sf}, labelfont={bf,color=headingcolor}, labelsep=quad]{caption}
 \usepackage[useregional]{datetime2}   % needed for \DTMNow on the colophon page
+\usepackage{etoolbox}
 
 % -----------------------------------------------------------------------
 % Toggles & base setup (declared here; state set in parameters.tex)
@@ -99,6 +100,35 @@
 
 \setlength{\parindent}{\bookparindent}
 \linespread{\booklinespread}
+
+% Equation spacing -- both the "normal" and "short line before/after" variants,
+% or LaTeX silently falls back to its own defaults whenever the line before
+% or after a display is short.
+\AtBeginDocument{%
+  \setlength{\abovedisplayskip}{\bookeqspaceabove}%
+  \setlength{\abovedisplayshortskip}{\bookeqspaceabove}%
+  \setlength{\belowdisplayskip}{\bookeqspacebelow}%
+  \setlength{\belowdisplayshortskip}{\bookeqspacebelow}%
+}
+
+\makeatletter
+\newcommand{\bookkilllastparskip}{\ifdim\lastskip>\z@\vskip-\lastskip\fi}
+
+\let\bookorigequation\equation
+\renewcommand{\equation}{\bookkilllastparskip\bookorigequation}
+
+\let\bookorigalign\align
+\renewcommand{\align}{\bookkilllastparskip\bookorigalign}
+
+\let\bookoriggather\gather
+\renewcommand{\gather}{\bookkilllastparskip\bookoriggather}
+
+\let\bookorigmultline\multline
+\renewcommand{\multline}{\bookkilllastparskip\bookorigmultline}
+
+\let\bookorigsubequations\subequations
+\renewcommand{\subequations}{\bookkilllastparskip\bookorigsubequations}
+\makeatother
 
 
 % =========================================================================
@@ -186,11 +216,11 @@
 
 \fancypagestyle{bookheader}{%
   \fancyhf{}%
-  \fancyhead[LE]{%
+  \fancyhead[LO]{%
     \sffamily\scriptsize\color{headingcolor}%
     \bookheadpage{\thepage}\quad\textbar\quad\mdseries Chapter~\thechapter\ \ \bookchaptershortstore%
   }%
-  \fancyhead[RO]{%
+  \fancyhead[RE]{%
     \sffamily\scriptsize\color{headingcolor}%
     \booksectionmarkstore\quad\textbar\quad\bookheadpage{\thepage}%
   }%
@@ -222,25 +252,35 @@
 % 5. CHAPTER OPENING  (parity toggle in parameters.tex, sec. 5)
 % =========================================================================
 \makeatletter
+% Text shown on an inserted parity-filler page (a page that exists solely
+% to push the next chapter onto the correct recto/verso side). Edit the
+% wording directly here if you want something different.
+\newcommand{\bookblankpagetext}{Intentionally blank page for page scheme}
+\newcommand{\shipbookblankpage}{%
+  \onecolumn
+  \thispagestyle{empty}%
+  \vspace*{\fill}
+  \begin{center}
+    \sffamily\itshape\footnotesize\color{gray!50}\bookblankpagetext
+  \end{center}
+  \vspace*{\fill}
+  \newpage
+  \twocolumn
+}
 \newcommand{\cleartoevenpage}{%
   \clearpage
   \if@twoside
-    \ifodd\c@page
-      \hbox{}\thispagestyle{empty}\newpage
-      \if@twocolumn\hbox{}\thispagestyle{empty}\newpage\fi
-    \fi
+    \ifodd\c@page\shipbookblankpage\fi
   \fi
 }
 \newcommand{\cleartooddpage}{%
   \clearpage
   \if@twoside
-    \ifodd\c@page\else
-      \hbox{}\thispagestyle{empty}\newpage
-      \if@twocolumn\hbox{}\thispagestyle{empty}\newpage\fi
-    \fi
+    \ifodd\c@page\else\shipbookblankpage\fi
   \fi
 }
 \newcommand{\clearchapterpage}{\ifchapterstartseven\cleartoevenpage\else\cleartooddpage\fi}
+\newcommand{\clearopeningpage}{\ifchapterstartseven\cleartooddpage\else\cleartoevenpage\fi}
 \makeatother
 
 % Registers the chapter (counter/ToC/marks/counters) without printing
@@ -258,17 +298,17 @@
 }
 % Preface / unnumbered front matter.
 \newcommand{\startchapterstar}[1]{%
-  \clearchapterpage
+  \clearopeningpage
   \renewcommand{\bookchaptertitlestore}{#1}%
   \renewcommand{\bookchaptershortstore}{#1}%
-  \phantomsection% \startchapter gets a link anchor for free via
-                  % \refstepcounter{chapter}; unnumbered chapters need
-                  % one placed explicitly, or the ToC entry links nowhere.
+  \phantomsection
   \addcontentsline{toc}{chapter}{#1}%
   \markboth{#1}{}%
   \boxcolor
 }
 \makeatother
+
+
 
 
 % =========================================================================

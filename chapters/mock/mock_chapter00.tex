@@ -31,7 +31,7 @@ page. Image block is 172\,mm wide, \lipsum[2]}
 % --- p3: L figure top -----------------------------------------------------
 \section{Two-column figures in an undecorated chapter}
 
-\figplaceholder[L][t]{C00-mtx-cycles}{C00-mtx-cycles}{Two-column figure, top of
+\figplaceholder[L][t]{C00-mtx-balance}{C00-mtx-balance}{Two-column figure, top of
 page. Image block is 172\,mm wide. \lipsum[2]}
 
 \lipsum[8-12]
@@ -117,7 +117,31 @@ Cross-reference tests, all of which must resolve:
 
 \subsubsection{A subsubsection heading}
 
-\lipsum[20]
+\lipsum[20-23]
+
+% ------- Worked Example 3 -------
+\begin{workedexample}{Energy--Water Conversion}
+\label{wex:0.1}
+
+\textbf{Question:} Annual evaporation over Lake Tana located within the Blue Nile River Basin in Ethiopia is 1.5\,m\,year$^{-1}$, or 0.41\,cm\,day$^{-1}$. Calculate:
+\begin{enumerate}[(a)]
+\item The average upward flux of water vapor across the lake surface in kg\,m$^{-2}$\,s$^{-1}$
+\item The resulting energy flux in W\,m$^{-2}$
+\item How does this flux compare with the incoming solar radiation of 325\,W\,m$^{-2}$?
+\end{enumerate}
+
+\subcase{Solution}
+
+(a) $1.5\,\text{m/yr} = 1.5\,\text{m}^3/\text{m}^2/\text{yr}$. Using the density of water of $1000$\,kg/m$^3$:
+\[
+  \text{flux} = \frac{1500\,\text{kg/m}^2/\text{yr}}{365 \times 24 \times 3600\,\text{s/yr}}
+  = 4.76 \times 10^{-5}\,\text{kg\,m}^{-2}\text{s}^{-1}
+\]
+
+(b) Energy flux $= 4.76 \times 10^{-5} \times 2.49 \times 10^6 = 118.4$\,W/m$^2$
+
+(c) $118.4 / 325 = 36\%$ of the incoming solar radiation.
+\end{workedexample}
 
 \paragraph{A run-in paragraph heading} \lipsum[21]
 
@@ -128,5 +152,7 @@ looks like inline in the body text.}
 
 % --- p7: no take-home box in a preface -----------------------------------
 \section{The preface ends without a take-home box}
+
+\subsection{This a subsection next to a section}
 
 \lipsum[23-24]
