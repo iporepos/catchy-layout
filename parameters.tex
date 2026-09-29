@@ -40,13 +40,15 @@
 \newcommand{\booktopblank}{5mm}         % blank strip above the header text
 \newcommand{\bookheadheight}{7mm}       % box that holds the header text itself
 \newcommand{\bookheadsep}{3mm}          % gap between header rule and first body line
-% Sum of the three above = 15mm = actual top margin as far as `geometry` is
-% concerned. That is NOT the same variable as the one below, which is used
-% independently by the cover-image cropping math (Section 13). If you
-% change the three values above, you likely also need to update
-% \booktopmargintotal to keep the cover math visually consistent.
-% >>> KNOWN OPEN ISSUE: these currently disagree (15mm vs 25mm). <
-\newcommand{\booktopmargintotal}{25mm}  % top margin as used by cover-image math only
+% Sum of the three above = actual top margin as far as `geometry` is
+% concerned. The chapter-cover math (config.tex sec. 6) needs that same
+% total to know where the flowing content (caption bar) resumes relative
+% to the absolutely-positioned photo above it, so it's derived here
+% instead of duplicated as a second hardcoded number -- keeping two
+% independent constants in sync by hand is what caused them to silently
+% drift apart (15mm vs 25mm) and made the cover photo's bottom edge get
+% overlapped/covered by the caption bar.
+\newcommand{\booktopmargintotal}{\dimexpr\booktopblank+\bookheadheight+\bookheadsep\relax}
 
 \newcommand{\bookbottommargin}{20mm}    % blank strip below body text (no footer used)
 \newcommand{\bookfootskip}{1pt}         % geometry footskip -- kept minimal since

@@ -8,6 +8,7 @@ chapter*.tex
 *.out
 *.toc
 *.fls
+book_export.zip
 bench/
 .idea
 

@@ -111,9 +111,6 @@ The commands you'll actually type inside a chapter body:
   `chapters/mock/`) once `transform_manuscript.py` starts producing them;
   until then, treat `main.tex` as a placeholder and `mock_main.tex` as the
   only file that reliably compiles end-to-end.
-- **Top-margin arithmetic mismatch** (tracked in `parameters.tex`):
-  `booktopblank + bookheadheight + bookheadsep` = 15mm, but
-  `\booktopmargintotal` (used independently by the cover-image math) = 25mm.
 - **`\bookfirstpagenumboxwidth`/`height`** are defined in `parameters.tex`
   but may no longer be read anywhere in `config.tex` after the refactor —
   worth a grep before the next cleanup pass.
