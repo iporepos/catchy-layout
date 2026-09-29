@@ -22,7 +22,6 @@
 % The physical page and the two-column text block that sits on it.
 % Everything here is in absolute units (mm) so the numbers are easy to
 % check against a printed spec sheet.
-
 \newcommand{\bookpagewidth}{216mm}      % trim width
 \newcommand{\bookpageheight}{276mm}     % trim height
 
@@ -174,6 +173,13 @@
 % Reading order below follows the page top-to-bottom.
 
 \newcommand{\bookcoverimageheight}{160mm}  % height of the full-bleed photo, from page top
+\newcommand{\bookcoverimagexanchor}{0.5}   % lateral crop anchor: 0 = photo's left edge
+                                            % shown, 1 = right edge shown, 0.5 = centred
+\newcommand{\bookcoverimageyanchor}{0}     % vertical crop anchor: 0 = photo's BOTTOM
+                                            % edge always shown (overflow is clipped off
+                                            % the top instead); 1 would show the top and
+                                            % clip the bottom. Kept at 0 so the chapter
+                                            % cover photo never loses its bottom.
 \newcommand{\bookcoverbarheight}{32mm}     % MINIMUM height of the number/caption bar
                                             % (grows if the caption text needs more room)
 \newcommand{\bookcovernumwidth}{32mm}      % width of the chapter-number box
@@ -291,7 +297,7 @@
 % fit the cover. 0 = show the low edge, 1 = show the high edge, 0.5 =
 % centred. Override per-cover via \makebookcover's optional arguments if
 % you need a one-off crop different from this default.
-\newcommand{\bookcoverphotoxanchor}{0.6}
+\newcommand{\bookcoverphotoxanchor}{0.73}
 \newcommand{\bookcoverphotoyanchor}{0.5}
 
 % --- Editor logo box ------------------------------------------------
@@ -299,27 +305,30 @@
                                                          % the image loader tries
                                                          % pdf/png/jpeg/jpg in turn
 \newcommand{\bookcoverlogowidth}{50mm}
-\newcommand{\bookcoverlogoheight}{14mm}
-\newcommand{\bookcoverlogox}{22mm}        % distance from the LEFT page edge
-\newcommand{\bookcoverlogotopgap}{250mm}  % distance from the TOP page edge
+\newcommand{\bookcoverlogoheight}{20mm}
+\newcommand{\bookcoverlogoright}{10mm}    % distance from the RIGHT page edge
+\newcommand{\bookcoverlogobottom}{10mm}   % distance from the BOTTOM page edge
 
 % --- Title / subtitle (left-aligned block) -----------------------------
-\newcommand{\bookcovertitlefont}{\fontsize{60}{70}\selectfont}
-\newcommand{\bookcoversubtitlefont}{\fontsize{25}{30}\selectfont}
+\newcommand{\bookcovertitlefont}{\fontsize{70}{80}\selectfont}
+\newcommand{\bookcoversubtitlefont}{\fontsize{30}{35}\selectfont}
 \newcommand{\bookcovertitlecolor}{white}
 \newcommand{\bookcoversubtitlecolor}{white}
 \newcommand{\bookcovertextleft}{22mm}         % left edge of the text block, from page left
-\newcommand{\bookcovertextwidth}{150mm}       % wrap width for title/subtitle
-\newcommand{\bookcovertitlebottomgap}{180mm}  % distance from the BOTTOM page edge
+\newcommand{\bookcovertextwidth}{120mm}       % wrap width for title/subtitle
+\newcommand{\bookcovertitlebottomgap}{150mm}  % distance from the BOTTOM page edge
                                                % (anchored from bottom so the block stays
                                                % put even if title length changes)
 \newcommand{\bookcovertitlesubtitlegap}{6mm}  % gap: title -> subtitle
 
 % --- Authors (bottom-right) ---------------------------------------------
-\newcommand{\bookcoverauthorfont}{\fontsize{20}{25}\selectfont}
+\newcommand{\bookcoverauthorfont}{\fontsize{30}{40}\selectfont}
 \newcommand{\bookcoverauthorcolor}{white}
-\newcommand{\bookcoverauthorright}{22mm}   % distance from the RIGHT page edge
-\newcommand{\bookcoverauthorbottom}{50mm}  % distance from the BOTTOM page edge
+\newcommand{\bookcoverauthorleft}{22mm}    % distance from the LEFT page edge
+\newcommand{\bookcoverauthorbottom}{30mm}  % distance from the BOTTOM page edge
+                                            % (kept above the editor logo -- must stay
+                                            % greater than \bookcoverlogobottom + logo
+                                            % height; retune both together)
 \newcommand{\bookcoverauthorwidth}{100mm}
 
 

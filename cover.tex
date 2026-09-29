@@ -79,11 +79,9 @@
 % #2 (optional) photo yanchor, default \bookcoverphotoyanchor
 % #3 cover photo path, NO extension (tries pdf/png/jpeg/jpg)
 % #4 title   #5 subtitle   #6 authors (free text; use \\ between names)
-\newlength{\bookcoverlogoy}
-\newlength{\bookcoverauthorx}
+\newlength{\bookcoverlogox}
 \NewDocumentCommand{\makebookcover}{O{\bookcoverphotoxanchor} O{\bookcoverphotoyanchor} m m m m}{%
-  \setlength{\bookcoverlogoy}{\dimexpr\bookpageheight-\bookcoverlogotopgap\relax}%
-  \setlength{\bookcoverauthorx}{\dimexpr\bookpagewidth-\bookcoverauthorright\relax}%
+  \setlength{\bookcoverlogox}{\dimexpr\bookpagewidth-\bookcoverlogoright\relax}%
   \thispagestyle{empty}%
   \AddToShipoutPictureBG*{%
     \AtPageLowerLeft{%
@@ -98,8 +96,8 @@
               \centering\sffamily\large\color{gray!60}[cover photo: #3]}}%
           }}}}%
         };
-        % ---- editor logo, top-left ---------------------------------------
-        \node[anchor=north west, inner sep=0pt] at (\bookcoverlogox,\bookcoverlogoy)
+        % ---- editor logo, bottom-right -------------------------------------
+        \node[anchor=south east, inner sep=0pt] at (\bookcoverlogox,\bookcoverlogobottom)
           {\makebookcoverlogo};
         % ---- title / subtitle, left-aligned ------------------------------
         \node[anchor=south west, inner sep=0pt] at (\bookcovertextleft,\bookcovertitlebottomgap)
@@ -109,10 +107,10 @@
             \vspace{\bookcovertitlesubtitlegap}
             {\mdseries\bookcoversubtitlefont\color{\bookcoversubtitlecolor}#5\par}%
           }};
-        % ---- authors, bottom-right ----------------------------------------
-        \node[anchor=south east, inner sep=0pt] at (\bookcoverauthorx,\bookcoverauthorbottom)
+        % ---- authors, bottom-left (above the editor logo) ------------------
+        \node[anchor=south west, inner sep=0pt] at (\bookcoverauthorleft,\bookcoverauthorbottom)
           {\parbox[b][][b]{\bookcoverauthorwidth}{%
-            \raggedleft\sffamily\bookcoverauthorfont
+            \raggedright\sffamily\bookcoverauthorfont
             \color{\bookcoverauthorcolor}#6\par}};
       \end{tikzpicture}%
     }%

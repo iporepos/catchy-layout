@@ -320,6 +320,11 @@
 % scoping bug where a local \StrLeft/\StrRight result vanished outside its
 % group; every path is written out in full (no shared base-path macro) so
 % nothing collides if a chapter file redefines a same-named macro.
+% Cropped (not stretched) via \bookcropimageanchor (defined in cover.tex,
+% \input before any chapter, so it's available by the time this runs) with
+% \bookcoverimagexanchor/\bookcoverimageyanchor from parameters.tex -- the
+% yanchor default of 0 keeps the photo's bottom edge always fully visible,
+% clipping overflow off the top (and laterally, per xanchor) instead.
 \makeatletter
 \newcommand{\makecoverimage}[1]{%
   \StrLeft{#1}{3}[\covtmpA]\StrRight{\covtmpA}{2}[\covtmpB]%
@@ -327,21 +332,21 @@
   \AddToShipoutPictureBG*{%
   \AtPageUpperLeft{\raisebox{-\bookcoverimageheight}{%
     \IfFileExists{./figures/chapter\bookcovchapnum/T1/#1_T1.pdf}{%
-      \includegraphics[width=\bookpagewidth,height=\bookcoverimageheight]{./figures/chapter\bookcovchapnum/T1/#1_T1.pdf}%
+      \bookcropimageanchor{./figures/chapter\bookcovchapnum/T1/#1_T1.pdf}{\bookpagewidth}{\bookcoverimageheight}{\bookcoverimagexanchor}{\bookcoverimageyanchor}%
     }{\IfFileExists{./figures/chapter\bookcovchapnum/T1/#1_T1.png}{%
-      \includegraphics[width=\bookpagewidth,height=\bookcoverimageheight]{./figures/chapter\bookcovchapnum/T1/#1_T1.png}%
+      \bookcropimageanchor{./figures/chapter\bookcovchapnum/T1/#1_T1.png}{\bookpagewidth}{\bookcoverimageheight}{\bookcoverimagexanchor}{\bookcoverimageyanchor}%
     }{\IfFileExists{./figures/chapter\bookcovchapnum/T1/#1_T1.jpeg}{%
-      \includegraphics[width=\bookpagewidth,height=\bookcoverimageheight]{./figures/chapter\bookcovchapnum/T1/#1_T1.jpeg}%
+      \bookcropimageanchor{./figures/chapter\bookcovchapnum/T1/#1_T1.jpeg}{\bookpagewidth}{\bookcoverimageheight}{\bookcoverimagexanchor}{\bookcoverimageyanchor}%
     }{\IfFileExists{./figures/chapter\bookcovchapnum/T1/#1_T1.jpg}{%
-      \includegraphics[width=\bookpagewidth,height=\bookcoverimageheight]{./figures/chapter\bookcovchapnum/T1/#1_T1.jpg}%
+      \bookcropimageanchor{./figures/chapter\bookcovchapnum/T1/#1_T1.jpg}{\bookpagewidth}{\bookcoverimageheight}{\bookcoverimagexanchor}{\bookcoverimageyanchor}%
     }{\IfFileExists{./figures/chapter\bookcovchapnum/T0/#1_T0.pdf}{%
-      \includegraphics[width=\bookpagewidth,height=\bookcoverimageheight]{./figures/chapter\bookcovchapnum/T0/#1_T0.pdf}%
+      \bookcropimageanchor{./figures/chapter\bookcovchapnum/T0/#1_T0.pdf}{\bookpagewidth}{\bookcoverimageheight}{\bookcoverimagexanchor}{\bookcoverimageyanchor}%
     }{\IfFileExists{./figures/chapter\bookcovchapnum/T0/#1_T0.png}{%
-      \includegraphics[width=\bookpagewidth,height=\bookcoverimageheight]{./figures/chapter\bookcovchapnum/T0/#1_T0.png}%
+      \bookcropimageanchor{./figures/chapter\bookcovchapnum/T0/#1_T0.png}{\bookpagewidth}{\bookcoverimageheight}{\bookcoverimagexanchor}{\bookcoverimageyanchor}%
     }{\IfFileExists{./figures/chapter\bookcovchapnum/T0/#1_T0.jpeg}{%
-      \includegraphics[width=\bookpagewidth,height=\bookcoverimageheight]{./figures/chapter\bookcovchapnum/T0/#1_T0.jpeg}%
+      \bookcropimageanchor{./figures/chapter\bookcovchapnum/T0/#1_T0.jpeg}{\bookpagewidth}{\bookcoverimageheight}{\bookcoverimagexanchor}{\bookcoverimageyanchor}%
     }{\IfFileExists{./figures/chapter\bookcovchapnum/T0/#1_T0.jpg}{%
-      \includegraphics[width=\bookpagewidth,height=\bookcoverimageheight]{./figures/chapter\bookcovchapnum/T0/#1_T0.jpg}%
+      \bookcropimageanchor{./figures/chapter\bookcovchapnum/T0/#1_T0.jpg}{\bookpagewidth}{\bookcoverimageheight}{\bookcoverimagexanchor}{\bookcoverimageyanchor}%
     }{%
       \colorbox{gray!25}{\parbox[b][\bookcoverimageheight][c]{\bookpagewidth}{%
         \centering\sffamily\large\color{gray!60}[cover photo: #1]}}%
